@@ -1,0 +1,26 @@
+1.Is JSX mandatory for React?
+ - No, we can write react code even without using react but JSX makes it really easy for developers
+2.Is ES6 mandatory for React?
+ - No, but highly recommended for structuring modular code
+3.How can I write comments in JSX?
+ - {/* */} 
+4. What is Virtual DOM?
+ - Representation of actual dom. It is basically Objects with nested objects. 
+ - comparison is made in Virtual dom even before accessing actual dom that is why react is faster
+5. What is Reconciliation in React?
+ - React uses this algorithm to determine how to efficiently update actual dom
+ - when state changes, react initiates recon. process to determine which parts needs to update
+ - goal is to update quickly and efficiently
+6.What is React Fiber?
+ - Introduced in React16
+ - Improve recon. algorithm
+ - Concurrent rendering 
+ - Suspense
+7.Why we need keys in React? When do we need keys in React?
+ - To efficiently update dom, keys are important 
+ - used when you use dynamic data like mapping through elements
+ - use only unique values as keys
+8.What is a Config Driven UI ?
+ - Approach where UI components are determined by backend data rather than hardcore data
+ - Eg. offer banners changes for different cities
+ 
