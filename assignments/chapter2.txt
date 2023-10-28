@@ -1,0 +1,28 @@
+1. What is `NPM`?
+ - Package manager to manage all the packages. It is a repo where all the packages are hosted.
+2. What is `Parcel/Webpack`? Why do we need it?
+ - It is a bundler, necessary to bundle the app before production. It minifies code, optimize code & image, code splitting, chunking and more
+3. What is `.parcel-cache`?
+ - Fast builds. 
+4. What is `npx` ?
+ - It executes the packages
+5. What is difference between `dependencies` vs `devDependencies`
+ - dep is for production, devDep for development purpose. parcel(bundler) is for devDep as we need to push code efficiently for production
+6. What is Tree Shaking?
+ - Removes unused code 
+7. What is Hot Module Replacement?
+ - parcel refreshes the page, on saving code it makes the changes to UI
+ - achieved by File Watching Algorithm
+8. List down your favourite 5 superpowers of Parcel and describe any 3 of them in your own words.
+ - 
+9. What is the difference between `package.json` and `package-lock.json`?
+ - package.json has packages that can be allowed to have minor updates. .lock files have the exact versioning of packages
+10. What is `node_modules` ? Is it a good idea to push that on git?
+ - No, they are set of packages created with the package and package.lock configs. 
+ - We should never push to git if you can regenerate files.
+ - It is transitive dependencies, where a package depends on another package
+11. What is the `dist` folder?
+ - when we run npx parcel build index.html, it saves the output in dist folder
+ - contains production ready code in this folder
+ - actual output of the code is run from dist folder, and during Hot reload it uses parcel-cache folder to check for changes
+12. What is `browserlists`
