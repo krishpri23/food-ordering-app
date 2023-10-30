@@ -1,4 +1,1 @@
-## Building our food ordering app 
-
-Learnings: 
- - Built using Parcel 
+## Namaste React Course Files

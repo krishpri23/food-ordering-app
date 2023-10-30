@@ -1,23 +1,21 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        {/* <img src="./food-app.png" alt="logo" width={100} height={100} /> */}
-      </div>
+import React from "react";
 
-      <nav>
-        <ul className="menu">
-          <li>Home</li>
-          <li>Contact Us</li>
-          <li>About Us</li>
-        </ul>
-      </nav>
-    </div>
+import React from "react";
+import Header from "./components/Header";
+import Home from "./components/Home";
+
+function App() {
+  return (
+    <>
+      <Header />
+      <Home />
+    </>
   );
-};
+}
+
+export default App;
 
 const resObj = {
   info: {
@@ -101,4 +99,4 @@ const resObj = {
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Header />);
+root.render(<App />);
