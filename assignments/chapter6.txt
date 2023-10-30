@@ -1,0 +1,48 @@
+1. What is microservice?
+ - It is a software architectural style where application is divided into smaller pieces of loosely coupled deployable services
+ - Separation of concerns 
+ - Single responsibility where they interact through API 
+ - Different techstack for each services
+
+2. What is Monolith architecture?
+ - All the services are under the application like UI , DB, Auth, API etc
+ - Even for smaller changes, we need to build and deploy the whole application
+
+3. Difference between both?
+ - Same as above answer
+
+4.Why do we need useEffect()?
+ - We use it to make API calls .
+ - In case you need to make an external call after the initial render, we can use this hook to make that call 
+ - Manage side effects ie. operations that occur after the inital render
+
+5. What is optional chaining?
+ - Feature introduced in 2020JS, to safely access properties and methods of an object without having to explicitly check if the object exists
+ - It prevent errors while trying to access the properties in an object
+
+6. What is Shimmer UI?
+ - It is user interface design pattern that resembles the web page layout
+ - It is the skeleton page that loads before the actual page is rendered
+ - For better UX (user experience)
+
+7. Difference between function expression and statement?
+ - Expression is assigning a function to a variable
+ - Statement is the function declaration
+ - Difference is hoisting. Expression won't be hoisted as variable is assigned 'undefined'
+
+ JS 
+ - Expression produces a value
+ - Statement is a building block of code
+
+8. CORS?
+ - cross origin resource sharing
+ - When different origins try to access the api, browser makes a call before the actual api call to the server
+ - server sends back a additional headers only then actual api is called
+ - For simple requests no preflight req is made
+
+9. async and await?
+ - It is a JS function that is used for handling Promises asynchronously
+ - Typically used for data fetching operation where the returned data gives a promise
+
+10. why const json = await response.json()? 
+ - The response data is in JSON format. We need to parse it to JS object before using the data 
