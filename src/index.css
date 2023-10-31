@@ -46,5 +46,7 @@
 }
 
 .shimmer {
-  background-color: greenyellow;
+  background-color: bisque;
+  width: 200px;
+  height: 100px;
 }
