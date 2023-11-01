@@ -50,3 +50,21 @@
   width: 200px;
   height: 100px;
 }
+
+.searchFilter {
+  width: 300px;
+  height: 40px;
+  display: block;
+}
+
+.search {
+  display: flex;
+  gap: 30px;
+  margin: 10px 20px;
+}
+
+.search-btn {
+  display: block;
+  width: 100px;
+  height: 40px;
+}
