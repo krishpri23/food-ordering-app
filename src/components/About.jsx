@@ -1,9 +1,26 @@
-import React from "react";
+import { Component } from "react";
+import UserClass from "./UserClass";
 
-export default function AboutUs() {
-  return (
-    <main>
-      <h3> This is about page</h3>
-    </main>
-  );
+class AboutUs extends Component {
+  constructor() {
+    super();
+    console.log("Parent const");
+  }
+
+  componentDidMount() {
+    console.log("Parent did mount ");
+  }
+
+  render() {
+    console.log("Parent render");
+    return (
+      <div>
+        <h2> About Page</h2>
+        <UserClass name="Krishnapriya" />
+        <UserClass name="Shamanthan" />
+      </div>
+    );
+  }
 }
+
+export default AboutUs;
