@@ -10,6 +10,7 @@ import { restaurants } from "../utils/mock";
 
 function RestaurantMenu() {
   const [resInfo, setResInfo] = useState(null);
+  const [openSection, setOpenSection] = useState(false);
 
   useEffect(() => {
     fetchMenu();
@@ -22,7 +23,7 @@ function RestaurantMenu() {
     );
 
     const json = await data.json();
-    console.log(json.data);
+    // console.log(json.data);
     setResInfo(json.data);
   };
   // important to check for null before destructuring
@@ -45,7 +46,11 @@ function RestaurantMenu() {
   // To destructure section 3 recommendation
   const { itemCards } =
     resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
-  console.log(itemCards);
+  //   console.log(itemCards);
+
+  // To destructure for all arrays of cards that hold different categories
+  const { cards } = resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR;
+  console.log(cards);
 
   return (
     <main className="flex flex-col justify-center  p-10 bg-red-100 w-full">
@@ -95,29 +100,71 @@ function RestaurantMenu() {
       <h1 className="font-bold uppercase text-green-600 py-5">
         {veg && "Pure Veg"}
       </h1>
-      {/* Recommended */}
-      <section className="flex flex-col gap-10 w-full ">
-        <h1 className="font-bold uppercase bg-purple-300 px-7 py-4 w-1/4 ">
-          {" "}
-          {itemCards[0]?.card?.info.category}
-        </h1>
-        {itemCards.map((item, index) => {
-          const {
-            name,
-            description,
-            price,
-            itemAttribute: { portionSize },
-          } = item?.card?.info;
+      {/* Categories  */}
+
+      <section className="">
+        {cards.map((card, index) => {
+          const { title } = card?.card?.card;
+
           return (
-            <div className="flex flex-col bg-indigo-50 w-1/2 h-100 justify-center px-5 py-3 ">
-              <h1 className="font-semibold"> {name} </h1>
-              <p> {description}</p>
-              <h2> Rs {price / 100} </h2>
-              <p>{portionSize}</p>
-            </div>
+            <section className="flex flex-col gap-10 w-full my-5">
+              <button
+                className="font-bold uppercase bg-purple-300 px-7 py-4 w-1/4 "
+                // onClick={() => setOpenSection(!openSection)}
+              >
+                {title}
+              </button>
+
+              {itemCards.map((item, index) => {
+                const {
+                  name,
+                  description,
+                  price,
+                  itemAttribute: { portionSize },
+                } = item?.card?.info;
+                return (
+                  <div className="flex flex-col bg-indigo-50 w-1/2 h-100 justify-center px-5 py-3 ">
+                    <h1 className="font-semibold"> {name} </h1>
+                    <p> {description}</p>
+                    <h2> Rs {price / 100} </h2>
+                    <p>{portionSize}</p>
+                  </div>
+                );
+              })}
+            </section>
           );
         })}
       </section>
+
+      {/* <section className="flex flex-col gap-10 w-full ">
+        <button
+          className="font-bold uppercase bg-purple-300 px-7 py-4 w-1/4 "
+          onClick={() => setOpenSection(!openSection)}
+        >
+          {" "}
+          {itemCards[0]?.card?.info.category}
+        </button>
+        {openSection && (
+          <>
+            {itemCards.map((item, index) => {
+              const {
+                name,
+                description,
+                price,
+                itemAttribute: { portionSize },
+              } = item?.card?.info;
+              return (
+                <div className="flex flex-col bg-indigo-50 w-1/2 h-100 justify-center px-5 py-3 ">
+                  <h1 className="font-semibold"> {name} </h1>
+                  <p> {description}</p>
+                  <h2> Rs {price / 100} </h2>
+                  <p>{portionSize}</p>
+                </div>
+              );
+            })}
+          </>
+        )}
+      </section> */}
     </main>
   );
 }
