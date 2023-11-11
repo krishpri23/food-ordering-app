@@ -4,6 +4,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Shimmer from "../utils/shimmer";
+import { Link } from "react-router-dom";
+import RestaurantCard from "./RestaurantCard";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
@@ -18,6 +20,7 @@ export default function Home() {
     );
 
     const data = await res.json();
+    console.log(data);
     setListOfRes(
       data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -43,16 +46,16 @@ export default function Home() {
       console.error(error);
     }
   };
-  return listOfRes.length === 0 ? (
+  return listOfRes?.length === 0 ? (
     <Shimmer />
   ) : (
     <main>
-      <div className="search">
+      <div className="flex gap-6">
         <input
           type="text"
           name="searchFilter"
           id="searchFilter"
-          className="searchFilter"
+          className="border-2 border-black "
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
@@ -60,7 +63,7 @@ export default function Home() {
           }}
         />
         <button
-          className="search-btn"
+          className="px-10 py-2 rounded-lg bg-green-500"
           type="submit"
           onClick={() => handleFilter()}
         >
@@ -71,14 +74,15 @@ export default function Home() {
         {filterRes &&
           filterRes.map((res) => {
             return (
-              <div key={res.info.id} className="container">
-                <h2> {res.info.name} </h2>
-                <div className="ratings">
-                  <h3>{res.info.avgRating} star </h3>
-                  <h3> {res.info.sla.deliveryTime} mins </h3>
+              <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
+                <div className="border-2 w-50 h-300 m-10 p-6">
+                  <h2> {res.info.name} </h2>
+                  <h3> {res.info.cuisines.join(",")}</h3>
+                  <div className="ratings">
+                    <h3>{res.info.avgRating} </h3>
+                  </div>
                 </div>
-                <p> {res.info.cuisines.join(", ")} </p>
-              </div>
+              </Link>
             );
           })}
       </div>
