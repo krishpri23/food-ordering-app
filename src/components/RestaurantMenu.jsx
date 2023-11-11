@@ -12,6 +12,8 @@ function RestaurantMenu() {
   const [resInfo, setResInfo] = useState(null);
   const [openSection, setOpenSection] = useState(false);
 
+  const { resId } = useParams();
+
   useEffect(() => {
     fetchMenu();
   }, []);
@@ -19,7 +21,7 @@ function RestaurantMenu() {
   const fetchMenu = async () => {
     // api for particular restaurant
     const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0826802&lng=80.2707184&restaurantId=14044&catalog_qa=undefined&submitAction=ENTER"
+      `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0826802&lng=80.2707184&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
     );
 
     const json = await data.json();
@@ -110,7 +112,7 @@ function RestaurantMenu() {
           // To omit the card[0] as it has no title associated with it
           if (index !== 0) {
             return (
-              <section className="flex flex-col gap-10 w-full my-5">
+              <section className="flex flex-col gap-10 w-full my-5" key={index}>
                 <button
                   className="font-bold uppercase bg-purple-300 px-7 py-4 w-1/4 "
                   //   onClick={() => setOpenSection(!openSection)}
