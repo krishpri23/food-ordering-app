@@ -50,7 +50,7 @@ export default function Home() {
     <Shimmer />
   ) : (
     <main>
-      <div className="flex gap-6">
+      <div className="flex gap-6 p-10">
         <input
           type="text"
           name="searchFilter"
@@ -63,7 +63,7 @@ export default function Home() {
           }}
         />
         <button
-          className="px-10 py-2 rounded-lg bg-green-500"
+          className="px-10 py-2 rounded-lg bg-pink-100 border-2 border-pink-300"
           type="submit"
           onClick={() => handleFilter()}
         >
