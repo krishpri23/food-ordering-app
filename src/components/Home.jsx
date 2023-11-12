@@ -6,7 +6,7 @@ import { useState } from "react";
 import Shimmer from "../utils/shimmer";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
-import fetchData from "../utils/api";
+import { fetchData } from "../utils/api";
 import filterResByName from "../utils/helpers";
 
 export default function Home() {

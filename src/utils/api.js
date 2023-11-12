@@ -19,4 +19,14 @@ const fetchData = async () => {
   }
 };
 
-export default fetchData;
+const fetchMenu = async (resId) => {
+  // api for particular restaurant
+  const data = await fetch(
+    `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=13.0826802&lng=80.2707184&restaurantId=${resId}&catalog_qa=undefined&submitAction=ENTER`
+  );
+
+  const json = await data.json();
+  return json.data;
+};
+
+export { fetchMenu, fetchData };
