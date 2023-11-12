@@ -6,6 +6,8 @@ import { useState } from "react";
 import Shimmer from "../utils/shimmer";
 import { Link } from "react-router-dom";
 import RestaurantCard from "./RestaurantCard";
+import fetchData from "../utils/api";
+import filterResByName from "../utils/helpers";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
@@ -14,38 +16,21 @@ export default function Home() {
 
   console.log("body rendered");
 
-  const fetchData = async () => {
-    const res = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
-
-    const data = await res.json();
-    console.log(data);
-    setListOfRes(
-      data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    setFilterRes(
-      data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    );
-    console.log(listOfRes);
-  };
-
   useEffect(() => {
-    fetchData();
-  }, [setListOfRes]);
+    const fetchAndUpdateState = async () => {
+      const data = await fetchData();
+      setFilterRes(data);
+      setListOfRes(data);
+    };
+    fetchAndUpdateState();
+  }, []);
 
+  // Filter search when button is clicked
   const handleFilter = () => {
-    try {
-      // when no filtering is done, it returns the actual array itself
-      const filteredRes = listOfRes.filter((res) =>
-        res.info.name.toLowerCase().includes(searchText.toLowerCase())
-      );
-      // debugger;
-      setFilterRes(filteredRes);
-    } catch (error) {
-      console.error(error);
-    }
+    const filteredResponse = filterResByName(listOfRes, searchText);
+    setFilterRes(filteredResponse);
   };
+
   return listOfRes?.length === 0 ? (
     <Shimmer />
   ) : (
@@ -59,7 +44,6 @@ export default function Home() {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
-            console.log(searchText);
           }}
         />
         <button
@@ -70,21 +54,14 @@ export default function Home() {
           Search{" "}
         </button>
       </div>
+
       <div className="res-cards">
         {filterRes &&
-          filterRes.map((res) => {
-            return (
-              <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
-                <div className="border-2 w-50 h-300 m-10 p-6">
-                  <h2> {res.info.name} </h2>
-                  <h3> {res.info.cuisines.join(",")}</h3>
-                  <div className="ratings">
-                    <h3>{res.info.avgRating} </h3>
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+          filterRes.map((res) => (
+            <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
+              <RestaurantCard resData={res?.info} />
+            </Link>
+          ))}
       </div>
     </main>
   );
