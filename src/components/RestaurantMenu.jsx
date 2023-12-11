@@ -23,6 +23,7 @@ function RestaurantMenu() {
   const fetchMenuApi = async () => {
     const data = await fetchMenu(resId);
     setResInfo(data);
+    console.log(data);
   };
 
   // important to check for null before destructuring

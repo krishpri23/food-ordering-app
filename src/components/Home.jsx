@@ -15,6 +15,7 @@ export default function Home() {
   const [filterRes, setFilterRes] = useState([]);
 
   console.log("body rendered");
+  console.log(listOfRes.length);
 
   useEffect(() => {
     const fetchAndUpdateState = async () => {
@@ -25,29 +26,33 @@ export default function Home() {
     fetchAndUpdateState();
   }, []);
 
-  // Filter search when button is clicked
-  const handleFilter = () => {
+  useEffect(() => {
+    // Filter search when button is clicked
     const filteredResponse = filterResByName(listOfRes, searchText);
     setFilterRes(filteredResponse);
-  };
+  }, [searchText, listOfRes]);
 
   return listOfRes?.length === 0 ? (
     <Shimmer />
   ) : (
-    <main>
-      <div className="flex gap-6 p-10">
+    <main className="m-10">
+      <h1 className="font-bold text-center">
+        {" "}
+        Top Restaurant chains in Chennai{" "}
+      </h1>
+      <div className="flex gap-6 p-10 justify-center">
         <input
           type="text"
           name="searchFilter"
           id="searchFilter"
-          className="border-2 border-black "
+          className="border-2 border-black p-2 "
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-          className="px-10 py-2 rounded-lg bg-pink-100 border-2 border-pink-300"
+          className="px-10 py-2 rounded-lg bg-gray-300 border-2 border-gray-400 hover:bg-gray-800 hover:text-white hover:border-gray-800"
           type="submit"
           onClick={() => handleFilter()}
         >
@@ -55,7 +60,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="res-cards">
+      <div className="w-full flex flex-col lg:flex-row flex-wrap justify-center  gap-15   ">
         {filterRes &&
           filterRes.map((res) => (
             <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
