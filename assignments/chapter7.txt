@@ -1,0 +1,9 @@
+1. What are various ways to add images into our App? Explain with code examples
+ - Images can be added to public folder and then accessed
+ - 
+2. What would happen if we do console.log(useState())?
+ - It gives array length as 2, arr[0] is undefined and arr[1] is a function
+ - Asynchronous by nature so value is not available immediately
+● How will useEffect behave if we don't add a dependency array ?
+● What is SPA?
+● What is difference between Client Side Routing and Server Side Routing?
