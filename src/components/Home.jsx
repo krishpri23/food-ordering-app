@@ -60,7 +60,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="w-full flex flex-col lg:flex-row flex-wrap justify-center  gap-15   ">
+      <div className="w-full flex flex-col lg:flex-row flex-wrap justify-center    ">
         {filterRes &&
           filterRes.map((res) => (
             <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
