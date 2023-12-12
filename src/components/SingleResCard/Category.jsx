@@ -2,33 +2,44 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 
 function RestaurantCategory(props) {
-  // To destructure for all arrays of cards that hold different categories
+  // Returns all the arrays of cards that hold different categories
   const { cards } = props?.resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR;
   const { veg } = props?.resInfo.cards[0]?.card?.card?.info;
 
+  console.log(cards);
   return (
     <section className=" w-full">
       <h1 className="w-full font-bold uppercase text-green-600 py-5">
         {veg && "Pure Veg"}
       </h1>
+
       {cards.map((card, index) => {
-        const { title, itemCards } = card?.card?.card;
-        //   console.log(itemCards);
+        const { title, itemCards, categories } = card?.card?.card;
+        console.log(categories);
+
         // To omit the card[0] as it has no title associated with it
         if (index !== 0) {
           return (
-            <section
-              className="flex flex-col gap-5 w-full my-5 border-2 border-red-100"
-              key={index}
-            >
+            <section className="flex flex-col gap-5 w-full my-5 " key={index}>
               {/* Recommended Section  */}
               <button
-                className="font-bold uppercase bg-purple-300 px-7 py-4  "
+                className="font-bold uppercase  py-4 text-start "
                 //   onClick={() => setOpenSection(!openSection)}
               >
                 {title}
               </button>
 
+              {/* For all other categories */}
+              {categories?.map((card, index) => {
+                const { title, itemCards } = card;
+                return (
+                  <div key={index} className={`border-b-2 pb-3`}>
+                    {title} ({itemCards.length})
+                  </div>
+                );
+              })}
+
+              {/* recommended cards */}
               {itemCards?.map((item, index) => {
                 const { name, price, description, ribbon } = item?.card?.info;
                 return (
