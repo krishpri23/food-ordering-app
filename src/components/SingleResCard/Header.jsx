@@ -8,15 +8,14 @@ function RestaurantHeader(props) {
     areaName,
     feeDetails: { message },
     sla: { deliveryTime },
-    veg,
   } = props?.resInfo.cards[0]?.card?.card?.info;
   return (
-    <section>
+    <section className="">
       <h1 className="font-bold"> {name}</h1>
       <p className="flex">
         {cuisines.map((item, index) => {
           return (
-            <li key={index} className="list-none">
+            <li key={index} className="list-none text-gray-500">
               {item}
               {/* To check if it is not the last item */}
               {index !== cuisines.length - 1 && ","}
@@ -24,17 +23,15 @@ function RestaurantHeader(props) {
           );
         })}
       </p>
-      <p>
+      <p className="text-gray-500">
         {" "}
         {areaName} , {message.split("|")[0]}{" "}
       </p>
-      <div className="w-1/4 py-5 flex gap-10 shadow-lg bg-blue-50">
-        <h1 className="font-semibold">{deliveryTime} Mins </h1>
+      <div className="w-full py-5 flex gap-4 font-bold uppercase ">
+        <h1 className="font-semibold ">{deliveryTime} Mins </h1>
         <h1 className="font-semibold">{costForTwoMessage}</h1>
       </div>
-      <h1 className="w-full font-bold uppercase text-green-600 py-5">
-        {veg && "Pure Veg"}
-      </h1>
+      <div className="border-b-2 border-dashed border-gray-500" />
     </section>
   );
 }
