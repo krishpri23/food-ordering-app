@@ -30,7 +30,7 @@ function RestaurantMenu() {
   if (resInfo === null) return <Shimmer />;
 
   return (
-    <main className="flex flex-col justify-center  p-10 bg-red-100 w-screen">
+    <main className="flex flex-col mx-auto  p-10  w-3/4 border-2 border-black">
       {/* Title of the restaurant */}
       <RestaurantHeader resInfo={resInfo} />
 
