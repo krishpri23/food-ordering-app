@@ -60,7 +60,7 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center    ">
+      <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
           filterRes.map((res) => <RestaurantCard resData={res?.info} />)}
       </div>

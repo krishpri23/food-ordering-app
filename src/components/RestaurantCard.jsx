@@ -10,9 +10,9 @@ function RestaurantCard({ resData }) {
 
   const { name, avgRating, cuisines, cloudinaryImageId, areaName } = resData;
 
-  // important to set a fixed width and height for cards as info size varies
+  // important to set a w and h for fixed size
   return (
-    <div className=" bg-slate-200 w-72 m-10 p-6 basis-1/4 shadow-sm  hover:shadow-lg">
+    <div className=" bg-slate-200 w-72 h-80 m-10 p-6  hover:shadow-xl border-2 hover:border-slate-500 ">
       <Link to={`/restaurants/${resData.id}`}>
         <img
           className=" w-36 h-24 rounded-md mx-auto mb-10"
@@ -27,7 +27,11 @@ function RestaurantCard({ resData }) {
           </h2>
         ) : null}
         <h2 className="font-bold"> {name} </h2>
-        <h3 className="text-gray-500 "> {cuisines.join(",")}</h3>
+        {/* Important to use a div as parent for flex-wrap as it wraps the exceeding list to next line  */}
+        <div className="flex flex-wrap">
+          <h3 className="text-gray-500 "> {cuisines.join(", ")}</h3>
+        </div>
+
         <h3 className="flex gap-2 items-center">
           {" "}
           <FaStar className="text-green-900" /> {avgRating}

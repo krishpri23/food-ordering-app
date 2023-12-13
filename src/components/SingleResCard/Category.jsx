@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+
 import { FaStar } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
+import ItemList from "./ItemList";
 
 /*
  This component is the most confusing part of the website.
@@ -23,7 +25,6 @@ function RestaurantCategory(props) {
 
   const handleClick = () => {
     setOpen(!open);
-    console.log(open);
   };
   console.log("these are cards obj", cards);
   return (
@@ -42,52 +43,63 @@ function RestaurantCategory(props) {
           return (
             <section className="flex flex-col gap-5 w-full my-5 " key={index}>
               <div className=" border-b-2 border-gray-500">
-                {/* Recommended & Level 1 Headings */}
-                <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => handleClick()}
-                >
+                <>
+                  {/* Recommended & Level 1 Headings */}
                   <div
-                    className="font-bold uppercase  py-4 text-start "
-                    //   onClick={() => setOpenSection(!openSection)}
+                    className="flex justify-between items-center cursor-pointer"
+                    onClick={() => handleClick()}
                   >
-                    {itemCards && itemCards?.length > 0
-                      ? `${title} (${itemCards.length})`
-                      : title}{" "}
+                    <div className="font-bold uppercase  py-4 text-start ">
+                      {itemCards && itemCards?.length > 0
+                        ? `${title} (${itemCards.length})`
+                        : title}{" "}
+                    </div>
+                    <FaAngleDown />
                   </div>
-                  <FaAngleDown />
-                </div>
 
-                {/* Recommended and Level 1 Heading's children */}
-                {itemCards?.map((item, index) => {
-                  const { name, price, description, ribbon } = item?.card?.info;
+                  {/* Recommended and Level 1 Heading's children */}
+                  {open &&
+                    itemCards?.map((item, index) => {
+                      const { name, price, description, ribbon } =
+                        item?.card?.info;
 
-                  return (
-                    <section key={index} className=" px-5 py-4 w-full  text-sm">
-                      {ribbon?.text && (
-                        <div className="flex gap-2 items-center text-yellow-500">
-                          <FaStar className="text-xs" />
-                          <h1 className="text-yellow-600 font-bold">
+                      return (
+                        <section
+                          key={index}
+                          className=" px-4 py-4 w-full flex justify-between items-center text-sm "
+                        >
+                          <div className="flex flex-col w-3/4">
+                            {ribbon?.text && (
+                              <div className="flex gap-2 items-center text-yellow-500">
+                                <FaStar className="text-xs" />
+                                <h1 className="text-yellow-600 font-bold">
+                                  {" "}
+                                  {ribbon?.text}
+                                </h1>
+                              </div>
+                            )}
+                            <h1> {name}</h1>
+                            <h1> Rs {price / 100}</h1>
+                            <p className="text-gray-500 my-2 pb-3 border-b-2 border-gray-200 ">
+                              {" "}
+                              {description}
+                            </p>
+                          </div>
+
+                          <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-5 py-2 rounded-md ">
                             {" "}
-                            {ribbon?.text}
-                          </h1>
-                        </div>
-                      )}
-                      <h1> {name}</h1>
-                      <h1> Rs {price / 100}</h1>
-                      <p className="text-gray-500 my-2 pb-3 border-b-2 border-gray-200 ">
-                        {" "}
-                        {description}
-                      </p>
-                    </section>
-                  );
-                })}
+                            Add to cart{" "}
+                          </button>
+                        </section>
+                      );
+                    })}
+                </>
               </div>
-
               {/* Available only for few cards not on all cards */}
               {categories?.map((card, index) => {
                 const { title, itemCards } = card;
                 console.log(card);
+                console.log("categories item length ", itemCards);
                 return (
                   <div key={index} className="border-b-2 pb-3">
                     {itemCards.length > 0 && (
@@ -105,22 +117,31 @@ function RestaurantCategory(props) {
                         </div>
 
                         {/* Category's (CLASSIC WRAP) heading's (VEG WRAPS) children (4 TYPES OF VEG WRAPS) has a list of items */}
-                        {itemCards?.map((card, index) => {
-                          const { name, price, description } = card?.card?.info;
+                        {open &&
+                          itemCards?.map((card, index) => {
+                            const { name, price, description } =
+                              card?.card?.info;
 
-                          return (
-                            <div
-                              key={index}
-                              className="flex flex-col  px-5 py-4 w-full text-sm"
-                            >
-                              <h2> hello </h2>
-                              <h1>{name} </h1>
-                              <h1>Rs {price / 100}</h1>
-                              <p className="text-gray-500">{description}</p>
-                              <hr className="mt-6" />
-                            </div>
-                          );
-                        })}
+                            return (
+                              <div
+                                key={index}
+                                className="flex justify-between items-center "
+                              >
+                                <div className="flex flex-col  px-3 py-4 w-3/4 text-sm">
+                                  <h1>{name} </h1>
+                                  <h1>Rs {price / 100}</h1>
+                                  <p className="text-gray-500">{description}</p>
+                                </div>
+
+                                <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-5 py-2 rounded-md ">
+                                  {" "}
+                                  Add to cart{" "}
+                                </button>
+
+                                <hr className="mt-6" />
+                              </div>
+                            );
+                          })}
                       </>
                     )}
                   </div>
