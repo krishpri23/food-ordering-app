@@ -62,11 +62,7 @@ export default function Home() {
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center    ">
         {filterRes &&
-          filterRes.map((res) => (
-            <Link key={res?.info?.id} to={`/restaurants/${res.info.id}`}>
-              <RestaurantCard resData={res?.info} />
-            </Link>
-          ))}
+          filterRes.map((res) => <RestaurantCard resData={res?.info} />)}
       </div>
     </main>
   );
