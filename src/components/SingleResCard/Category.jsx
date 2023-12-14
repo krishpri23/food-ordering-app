@@ -48,18 +48,7 @@ function RestaurantCategory(props) {
                     handleClick={handleClick}
                   />
 
-                  {/* Recommended and Level 1 Heading's children */}
-                  {isOpen &&
-                    itemCards?.map((item, index) => {
-                      return (
-                        <section
-                          key={index}
-                          className=" px-4 py-4 w-full flex justify-between items-center text-sm "
-                        >
-                          {isOpen && <CategoryBody item={item} />}
-                        </section>
-                      );
-                    })}
+                  {isOpen && <CategoryBody itemCards={itemCards} />}
                 </>
               </div>
             </section>

@@ -13,8 +13,6 @@ Clickable component redirects to each restaurant detail page. Check App.jsx for 
 */
 
 function RestaurantCard({ resData }) {
-  console.log(resData);
-
   const discountHeader = resData.aggregatedDiscountInfoV3?.header;
   const discountSubHeader = resData.aggregatedDiscountInfoV3?.subHeader;
 
