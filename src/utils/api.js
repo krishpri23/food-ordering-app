@@ -5,12 +5,12 @@ const fetchData = async () => {
     );
 
     const data = await res.json();
-    console.log(data);
+    console.log("inside fetch data ", data);
 
     //update state var to json data
 
     return (
-      data?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || []
     );
   } catch (error) {

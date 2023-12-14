@@ -11,6 +11,16 @@ import RestaurantHeader from "./SingleResCard/Header";
 import RestaurantCategory from "./SingleResCard/Category";
 import { fetchMenu } from "../utils/api";
 
+/* 
+
+This is a dynamic component that displays restaurant details using resId displayed on url
+cards[] - contains all the info needed for restaurant details
+0 - header info
+1 - offers banner
+2 - all the food items
+
+*/
+
 function RestaurantMenu() {
   const [resInfo, setResInfo] = useState(null);
 
@@ -31,13 +41,13 @@ function RestaurantMenu() {
 
   return (
     <main className="flex flex-col mx-auto  p-10  w-3/4 border-2 border-black">
-      {/* Title of the restaurant */}
+      {/* Title of the restaurant  */}
       <RestaurantHeader resInfo={resInfo} />
 
       {/* offers */}
       <RestaurantOffers resInfo={resInfo} />
 
-      {/* Categories  */}
+      {/* Categories   */}
       <RestaurantCategory resInfo={resInfo} />
     </main>
   );

@@ -2,6 +2,16 @@ import React from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+/*
+
+This component is displayed on the home page under recommended foods in chennai 
+Clickable component redirects to each restaurant detail page. Check App.jsx for component redirected to
+
+
+@params (Object) - restaurant info
+@returns (JSX.element) - Restaurant Card
+*/
+
 function RestaurantCard({ resData }) {
   console.log(resData);
 

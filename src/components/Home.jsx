@@ -21,6 +21,7 @@ export default function Home() {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
       setFilterRes(data);
+      console.log(data);
       setListOfRes(data);
     };
     fetchAndUpdateState();
