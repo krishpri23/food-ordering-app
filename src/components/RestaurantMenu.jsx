@@ -19,6 +19,13 @@ cards[] - contains all the info needed for restaurant details
 1 - offers banner
 2 - all the food items
 
+
+ - cards
+  - itemCards - list of food items 
+   
+
+ cards[0] inside REGULAR has basic info about restaurant not needed.
+ cards[1] - Recommended details   
 */
 
 function RestaurantMenu() {
@@ -61,11 +68,7 @@ function RestaurantMenu() {
           const { itemCards } = card?.card?.card;
           // To omit the card[0] as it has no title associated with it
           if (index !== 0 && itemCards) {
-            return (
-              <section className="flex flex-col gap-5 w-full my-5 " key={index}>
-                <RestaurantCategory card={card} />
-              </section>
-            );
+            return <RestaurantCategory card={card} key={index} />;
           }
         })}
       </section>

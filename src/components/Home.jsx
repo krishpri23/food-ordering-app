@@ -14,9 +14,6 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const [filterRes, setFilterRes] = useState([]);
 
-  console.log("body rendered");
-  console.log(listOfRes.length);
-
   useEffect(() => {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
@@ -63,7 +60,9 @@ export default function Home() {
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
-          filterRes.map((res) => <RestaurantCard resData={res?.info} />)}
+          filterRes.map((res) => (
+            <RestaurantCard resData={res?.info} key={res.info.name} />
+          ))}
       </div>
     </main>
   );
