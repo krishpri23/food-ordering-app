@@ -36,20 +36,18 @@ function RestaurantCategory(props) {
       {cards.map((card, index) => {
         const { itemCards } = card?.card?.card;
         // To omit the card[0] as it has no title associated with it
-        if (index !== 0) {
+        if (index !== 0 && itemCards) {
           return (
             <section className="flex flex-col gap-5 w-full my-5 " key={index}>
-              <div className=" border-b-2 border-gray-500">
-                <>
-                  {/* Recommended & Level 1 Headings */}
-                  <CategoryHeading
-                    card={card}
-                    isOpen={isOpen}
-                    handleClick={handleClick}
-                  />
+              <div className=" border-2 border-gray-50 px-3 bg-slate-50 ">
+                {/* Recommended & Level 1 Headings */}
+                <CategoryHeading
+                  card={card}
+                  isOpen={isOpen}
+                  handleClick={handleClick}
+                />
 
-                  {isOpen && <CategoryBody itemCards={itemCards} />}
-                </>
+                {isOpen && <CategoryBody itemCards={itemCards} />}
               </div>
             </section>
           );

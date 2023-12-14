@@ -3,12 +3,13 @@ import { FaStar } from "react-icons/fa";
 
 export default function CategoryBody({ itemCards }) {
   console.log(itemCards);
+  // Each accordion body
   return (
-    <section>
+    <section className="border-b-2 border-gray-500 ">
       {itemCards?.map((item) => (
         <div
           key={item.card.info.id}
-          className=" px-4 py-4 w-full flex justify-between items-center text-sm "
+          className=" px-4 py-4 w-full flex justify-between items-center text-sm border-b-2 border-gray-500 "
         >
           <div className="flex flex-col w-3/4">
             {item.card?.info?.ribbon?.text && (
@@ -28,7 +29,12 @@ export default function CategoryBody({ itemCards }) {
             </p>
           </div>
           <div>
-            <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-5 py-2 rounded-md ">
+            <img
+              src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item.card.info.imageId}`}
+              alt="food image"
+              className="w-40 h-32 -mb-10"
+            />
+            <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md ">
               {" "}
               Add to cart{" "}
             </button>
