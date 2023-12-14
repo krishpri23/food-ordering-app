@@ -8,8 +8,8 @@ import { useParams } from "react-router-dom";
 import Shimmer from "../utils/shimmer";
 import RestaurantOffers from "./SingleResCard/Offers";
 import RestaurantHeader from "./SingleResCard/Header";
-import RestaurantCategory from "./SingleResCard/Category";
 import { fetchMenu } from "../utils/api";
+import RestaurantCategory from "./SingleResCard/RestaurantCategory";
 
 /* 
 
@@ -39,6 +39,10 @@ function RestaurantMenu() {
   // important to check for null before destructuring
   if (resInfo === null) return <Shimmer />;
 
+  // Returns all the arrays of cards that hold different categories
+  const { cards } = resInfo?.cards[2].groupedCard?.cardGroupMap?.REGULAR;
+  const { veg } = resInfo.cards[0]?.card?.card?.info;
+
   return (
     <main className="flex flex-col mx-auto  p-10  w-3/4 border-2 border-black">
       {/* Title of the restaurant  */}
@@ -48,7 +52,23 @@ function RestaurantMenu() {
       <RestaurantOffers resInfo={resInfo} />
 
       {/* Categories   */}
-      <RestaurantCategory resInfo={resInfo} />
+      <section className=" w-full">
+        <h1 className="w-full font-bold uppercase text-green-600 py-5">
+          {veg && "Pure Veg"}
+        </h1>
+
+        {cards.map((card, index) => {
+          const { itemCards } = card?.card?.card;
+          // To omit the card[0] as it has no title associated with it
+          if (index !== 0 && itemCards) {
+            return (
+              <section className="flex flex-col gap-5 w-full my-5 " key={index}>
+                <RestaurantCategory card={card} />
+              </section>
+            );
+          }
+        })}
+      </section>
     </main>
   );
 }
