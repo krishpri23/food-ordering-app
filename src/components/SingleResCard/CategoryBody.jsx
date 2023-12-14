@@ -28,12 +28,16 @@ export default function CategoryBody({ itemCards }) {
               {item.card?.info?.description}
             </p>
           </div>
-          <div>
-            <img
-              src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${item.card.info.imageId}`}
-              alt="food image"
-              className="w-40 h-32 -mb-10"
-            />
+
+          <div className="flex flex-col items-center justify-center">
+            {item.card.info.imageId && (
+              <img
+                src={`https://media-assets.swiggy.com/swiggy/image/upload/${item.card.info.imageId}`}
+                alt="food image"
+                className="w-32 h-28 -mb-10"
+              />
+            )}
+
             <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md ">
               {" "}
               Add to cart{" "}
