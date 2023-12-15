@@ -43,6 +43,16 @@ function RestaurantMenu() {
     console.log(data);
   };
 
+  // State to isOpen/close accordion. This index value will reflect on which accordion will stay open
+  const [showIndex, setShowIndex] = useState(0);
+
+  const handleClick = (index) => {
+    // To close the same accordion that is opened, set the index to -1 so that item with -1 will be opened ie. it does not exist anyway
+    {
+      index === showIndex ? setShowIndex(-1) : setShowIndex(index);
+    }
+  };
+
   // important to check for null before destructuring
   if (resInfo === null) return <Shimmer />;
 
@@ -66,9 +76,19 @@ function RestaurantMenu() {
 
         {cards.map((card, index) => {
           const { itemCards } = card?.card?.card;
-          // To omit the card[0] as it has no title associated with it
+          // Omit the card[0] as it has no title associated with it
           if (index !== 0 && itemCards) {
-            return <RestaurantCategory card={card} key={index} />;
+            // controlled component by res menu
+            // isOpen is sending true/false to res category to show/hide that accordion using 'index'
+            return (
+              <RestaurantCategory
+                card={card}
+                key={card.card.card.title}
+                handleClick={handleClick}
+                isOpen={index === showIndex ? true : false}
+                index={index}
+              />
+            );
           }
         })}
       </section>

@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import CategoryBody from "./CategoryBody";
-
 import { FaAngleDown } from "react-icons/fa6";
 import { FaAngleUp } from "react-icons/fa6";
 
-function RestaurantCategory({ card }) {
-  // State to isOpen/close accordian
-  const [isOpen, setIsOpen] = useState(false);
+/*
+ This is a restaurant category component that shows accordion
+*/
 
-  const handleClick = () => {
-    setIsOpen(!isOpen);
-    console.log("clciked");
-  };
-
+function RestaurantCategory({ card, isOpen, handleClick, index }) {
   const { title, itemCards } = card?.card?.card;
   return (
     <section className="flex flex-col gap-5 w-full my-5">
@@ -20,7 +15,7 @@ function RestaurantCategory({ card }) {
         {/* Recommended & Level 1 Headings */}
         <div
           className="flex justify-between items-center cursor-pointer "
-          onClick={() => handleClick()}
+          onClick={() => handleClick(index)}
         >
           <div className="font-bold uppercase  py-4 text-start ">
             {itemCards && itemCards?.length > 0
