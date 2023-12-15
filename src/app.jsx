@@ -7,6 +7,8 @@ import AboutUs from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 const appRouter = createBrowserRouter([
   {
@@ -38,8 +40,11 @@ const appRouter = createBrowserRouter([
 function App() {
   return (
     <>
-      <Header />
-      <Outlet />
+      {/* To use redux inside react app, react uses provider as a bridge */}
+      <Provider store={appStore}>
+        <Header />
+        <Outlet />
+      </Provider>
     </>
   );
 }

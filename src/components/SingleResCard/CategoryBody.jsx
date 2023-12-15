@@ -1,7 +1,17 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../utils/cartSlice";
 
 export default function CategoryBody({ itemCards }) {
+  const dispatch = useDispatch();
+
+  const handleAddItem = (name, price) => {
+    // dispatch action
+    console.log("item dispatched ");
+    dispatch(addItem({ name, price }));
+  };
+
   console.log(itemCards);
   // Each accordion body
   return (
@@ -34,7 +44,10 @@ export default function CategoryBody({ itemCards }) {
                 />
               )}
 
-              <button className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md ">
+              <button
+                className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md "
+                onClick={() => handleAddItem(name, price)}
+              >
                 {" "}
                 Add to cart{" "}
               </button>
