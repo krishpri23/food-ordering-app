@@ -1,23 +1,26 @@
-import React from "react";
-
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import { fetchData } from "../utils/api";
 import filterResByName from "../utils/helpers";
-import { useEffect } from "react";
-import { useState } from "react";
 
 export default function OnlineRestaurants() {
-  const [listOfRes, setListOfRes] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [listOfRes, setListOfRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
 
   useEffect(() => {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
-      setFilterRes(data);
-      console.log("Initial data from API :", data);
-      setListOfRes(data);
+      setFilterRes(
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+      setListOfRes(
+        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants
+      );
+
+      console.log("Initial data from API :", listOfRes);
     };
     fetchAndUpdateState();
   }, []);

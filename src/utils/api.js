@@ -8,11 +8,7 @@ const fetchData = async () => {
     console.log("inside fetch data ", data);
 
     //update state var to json data
-
-    return (
-      data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants || []
-    );
+    return data;
   } catch (error) {
     console.error(error);
     return [];

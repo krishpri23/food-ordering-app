@@ -3,15 +3,16 @@
 import React, { useEffect, useState } from "react";
 import Shimmer from "../utils/shimmer";
 import OnlineRestaurants from "./OnlineRestaurants";
+import SliderOptions from "./SliderOptions";
 import { fetchData } from "../utils/api";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
-
   useEffect(() => {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
       setListOfRes(data);
+      console.log("Initial data from API :", listOfRes);
     };
     fetchAndUpdateState();
   }, []);
@@ -19,7 +20,8 @@ export default function Home() {
   return listOfRes?.length === 0 ? (
     <Shimmer />
   ) : (
-    <main className="m-10">
+    <main className="w-3/4 mx-auto">
+      <SliderOptions resData={listOfRes} />
       <OnlineRestaurants />
     </main>
   );
