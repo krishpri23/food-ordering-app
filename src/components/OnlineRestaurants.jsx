@@ -57,9 +57,7 @@ export default function OnlineRestaurants() {
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
-          filterRes.map((res) => (
-            <RestaurantCard resData={res?.info} key={res.info.name} />
-          ))}
+          filterRes.map((res) => <RestaurantCard resData={res?.info} />)}
       </div>
     </>
   );

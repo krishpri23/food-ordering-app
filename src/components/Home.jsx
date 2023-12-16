@@ -5,6 +5,7 @@ import Shimmer from "../utils/shimmer";
 import OnlineRestaurants from "./OnlineRestaurants";
 import SliderOptions from "./SliderOptions";
 import { fetchData } from "../utils/api";
+import TopRestaurants from "./TopRestaurants";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
@@ -22,6 +23,7 @@ export default function Home() {
   ) : (
     <main className="w-3/4 mx-auto">
       <SliderOptions resData={listOfRes} />
+      <TopRestaurants resData={listOfRes} />
       <OnlineRestaurants />
     </main>
   );

@@ -16,6 +16,7 @@ export default function SliderOptions({ resData }) {
             src={`${IMAGE_ADDRESS}/${item.imageId} `}
             alt="food image"
             className="w-full"
+            key={item.id}
           />
         ))}
       </div>
