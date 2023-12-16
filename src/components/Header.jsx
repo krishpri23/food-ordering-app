@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import cartSlice from "../utils/cartSlice";
 
 const Header = () => {
@@ -21,7 +21,10 @@ const Header = () => {
           <li>Contact Us</li>{" "}
         </NavLink>
       </ul>
-      <h2 className="flex flex-row w-20 "> Cart {cartItems.length} </h2>
+      <Link to="/cart" className="flex flex-row w-20 ">
+        {" "}
+        Cart {cartItems.length}{" "}
+      </Link>
     </nav>
   );
 };

@@ -6,10 +6,10 @@ import { addItem } from "../../utils/cartSlice";
 export default function CategoryBody({ itemCards }) {
   const dispatch = useDispatch();
 
-  const handleAddItem = (name, price) => {
+  const handleAddItem = (item) => {
     // dispatch action
     console.log("item dispatched ");
-    dispatch(addItem({ name, price }));
+    dispatch(addItem(item));
   };
 
   console.log(itemCards);
@@ -46,7 +46,7 @@ export default function CategoryBody({ itemCards }) {
 
               <button
                 className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md "
-                onClick={() => handleAddItem(name, price)}
+                onClick={() => handleAddItem(item)}
               >
                 {" "}
                 Add to cart{" "}
