@@ -1,6 +1,5 @@
 // Filter search when button is clicked
 const filterResByName = (listOfRes, searchText) => {
-  console.log("inside helpers ");
   try {
     // when no filtering is done, it returns the actual array itself
     return listOfRes.filter((res) =>

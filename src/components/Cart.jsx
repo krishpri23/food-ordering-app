@@ -8,6 +8,7 @@ export default function Cart() {
     <div className="w-full p-5 flex flex-col mx-auto">
       <h2> Cart Page</h2>
       {cartItems.map((cartItem, index) => {
+        console.log(cartItem.card);
         const { name, price } = cartItem.card?.info;
         return (
           <div

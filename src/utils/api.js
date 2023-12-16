@@ -10,7 +10,7 @@ const fetchData = async () => {
     //update state var to json data
 
     return (
-      data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants || []
     );
   } catch (error) {
