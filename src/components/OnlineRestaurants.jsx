@@ -7,10 +7,12 @@ export default function OnlineRestaurants() {
   const [searchText, setSearchText] = useState("");
   const [listOfRes, setListOfRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
+  const [title, setTitle] = useState("");
 
   useEffect(() => {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
+
       setFilterRes(
         data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
@@ -32,7 +34,8 @@ export default function OnlineRestaurants() {
   }, [searchText, listOfRes]);
   return (
     <>
-      <h1 className="font-bold text-center">
+      <h1 className="font-bold  text-2xl mt-5">
+        {" "}
         Restaurant with online delivery{" "}
       </h1>
       <div className="flex gap-6 p-10 justify-center">
