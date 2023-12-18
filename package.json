@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "this is a basic food ordering app",
   "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -16,6 +18,9 @@
   },
   "homepage": "https://github.com/krishpri23/food-ordering-app#readme",
   "devDependencies": {
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "babel-jest": "^29.7.0",
     "buffer": "^6.0.3",
     "parcel": "^2.10.1",
     "postcss": "^8.4.31",
