@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.23.6",
     "babel-jest": "^29.7.0",
     "buffer": "^6.0.3",
+    "jest-environment-jsdom": "^29.7.0",
     "parcel": "^2.10.1",
     "postcss": "^8.4.31",
     "process": "^0.11.10",
