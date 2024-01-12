@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 export default function Cart() {
+  // To read data from store, use selector. Cart is subscribing to the store
   const cartItems = useSelector((store) => store.cart.items);
   console.log("inside cart", cartItems);
 
