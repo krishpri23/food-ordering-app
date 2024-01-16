@@ -1,19 +1,19 @@
+// Top res chains in chennai
+
 import React from "react";
-import RestaurantCard from "./RestaurantCard";
-import { Link } from "react-router-dom";
-import { FaStar } from "react-icons/fa";
 import IMAGE_ADDRESS from "../utils/constants";
 
 export default function TopRestaurants({ resData }) {
-  const { title } = resData?.data?.cards[2]?.card?.card?.header;
+  const { title } = resData?.data?.cards[1]?.card?.card?.header;
   const restaurants =
-    resData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+    resData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
       ?.restaurants;
   console.log("inside top chains ", restaurants);
+  console.log("resData ", resData);
 
   return (
     <section>
-      <h1 className="font-bold text-2xl my-2"> {title}</h1>
+      <h1 className="font-bold text-2xl my-2"> {title} </h1>
       <div className="w-full flex overflow-x-auto">
         {restaurants &&
           restaurants.map((res) => {

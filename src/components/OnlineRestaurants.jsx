@@ -14,11 +14,11 @@ export default function OnlineRestaurants() {
       const data = await fetchData();
 
       setFilterRes(
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
       setListOfRes(
-        data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
 
@@ -60,7 +60,9 @@ export default function OnlineRestaurants() {
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
-          filterRes.map((res) => <RestaurantCard resData={res?.info} />)}
+          filterRes.map((res) => (
+            <RestaurantCard key={res?.id} resData={res?.info} />
+          ))}
       </div>
     </>
   );
