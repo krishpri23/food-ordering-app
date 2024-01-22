@@ -1,9 +1,0 @@
-## Namaste React Course Files
-
-Concentrating only on functionality not styles
-
-## Lessons learnt from chapter 6:
-    - Seperate arrays for storing api data and filtering data
-    - Use filterArray to display UI and assign the api data for initial render
-    - If no condition is provided to filter(), it returns the actual array
-    - ShimmerUI to display placeholder /skeleton for the res cards
