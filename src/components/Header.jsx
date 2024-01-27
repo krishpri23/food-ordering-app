@@ -2,29 +2,41 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
 import cartSlice from "../utils/cartSlice";
+import { FaSearch } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Header = () => {
   // subscribing to the cart items
   const cartItems = useSelector((store) => store.cart.items);
   console.log("cart items", cartItems);
   return (
-    <nav className="w-full bg-indigo-200 flex flex-row justify-between items-center px-6">
-      <ul className="flex w-full justify-center place-items-center  gap-10 py-3 rounded-sm">
-        <NavLink to="/about">
-          <li>About Us</li>
+    <nav className="w-full bg-indigo-200 px-6 py-3">
+      <ul className="flex w-full justify-end  gap-20 py-3 rounded-sm">
+        <NavLink className="flex justify-center gap-3 items-center" to="/about">
+          <span>
+            {" "}
+            <FaSearch />{" "}
+          </span>
+          <li> Search </li>
         </NavLink>
-        <NavLink to="/">
-          {" "}
-          <li>Home</li>
+        <NavLink className="flex justify-center gap-3 items-center" to="/">
+          <span>
+            <FaRegUserCircle />
+          </span>
+          <li> Sign In </li>
         </NavLink>
-        <NavLink to="/contact">
-          <li>Contact Us</li>{" "}
+        <NavLink
+          className="flex justify-center gap-3 items-center"
+          to="/contact"
+        >
+          <span>
+            {" "}
+            <FaCartArrowDown />
+          </span>
+          <span>Cart ({cartItems.length}) </span>{" "}
         </NavLink>
       </ul>
-      <Link to="/cart" className="flex flex-row w-20 ">
-        {" "}
-        Cart {cartItems.length}{" "}
-      </Link>
     </nav>
   );
 };

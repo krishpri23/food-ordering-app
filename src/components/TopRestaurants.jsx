@@ -1,7 +1,7 @@
 // Top res chains in chennai
 
 import React from "react";
-import IMAGE_ADDRESS from "../utils/constants";
+import { TOP_RESTAURANTS } from "../utils/constants";
 
 export default function TopRestaurants({ resData }) {
   const { title } = resData?.data?.cards[1]?.card?.card?.header;
@@ -12,9 +12,9 @@ export default function TopRestaurants({ resData }) {
   console.log("resData ", resData);
 
   return (
-    <section>
+    <section className="w-full">
       <h1 className="font-bold text-2xl my-2"> {title} </h1>
-      <div className="w-full flex overflow-x-auto">
+      <div className=" flex overflow-x-auto">
         {restaurants &&
           restaurants.map((res) => {
             const {
@@ -29,24 +29,28 @@ export default function TopRestaurants({ resData }) {
             return (
               <div
                 key={res.info.id}
-                className=" min-w-max min-h-max flex flex-col m-5 rounded-xl font-bold px-5 py-3 hover:border"
+                className="w-64 bg-green-200 m-5  rounded-xl font-bold  hover:border"
               >
-                <img
-                  src={` ${IMAGE_ADDRESS}/${cloudinaryImageId} `}
-                  alt="res image"
-                  className="w-60 h-32 rounded-md"
-                />
-                <h1> {name}</h1>
-
-                <div className="w-full flex  gap-5">
-                  <h2> {avgRating}</h2>
-                  <h2>{deliveryTime} mins</h2>
+                <div>
+                  <img
+                    src={` ${TOP_RESTAURANTS}/${cloudinaryImageId} `}
+                    alt="res image"
+                    className="w-64 h-32 rounded-md object-cover"
+                  />
                 </div>
 
-                <div className="flex flex-wrap overflow-auto w-3/4">
-                  <h3 className="font-normal text-gray-500  ">
-                    {cuisines.join(", ")}
-                  </h3>
+                <div className="p-5">
+                  <h1 className="text-wrap"> {name}</h1>
+                  <div className="w-full flex gap-5">
+                    <h2> {avgRating}</h2>
+                    <h2>{deliveryTime} mins</h2>
+                  </div>
+
+                  <div className="flex w-3/4 text-wrap">
+                    <h3 className="font-normal text-gray-500 truncate ">
+                      {cuisines.join(",")}
+                    </h3>
+                  </div>
                 </div>
               </div>
             );
