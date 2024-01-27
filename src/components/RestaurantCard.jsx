@@ -1,6 +1,7 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { TOP_RESTAURANTS } from "../utils/constants";
 
 /*
 
@@ -16,15 +17,15 @@ function RestaurantCard({ resData }) {
   const discountHeader = resData.aggregatedDiscountInfoV3?.header;
   const discountSubHeader = resData.aggregatedDiscountInfoV3?.subHeader;
 
-  const { name, avgRating, cuisines, cloudinaryImageId, areaName } = resData;
+  const { name, avgRating, cuisines, cloudinaryImageId } = resData;
 
   // important to set a w and h for fixed size
   return (
-    <div className=" bg-slate-200 w-72 h-80 m-10 p-6  hover:shadow-xl border-2 hover:border-slate-500 ">
+    <div className=" bg-slate-200 w-72 h-80 m-10 p-6  hover:shadow-xl border-2 hover:border-slate-500 text-wrap">
       <Link to={`/restaurants/${resData.id}`}>
         <img
-          className=" w-36 h-24 rounded-md mx-auto mb-10"
-          src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${cloudinaryImageId}`}
+          className=" w-60 h-32 rounded-md mx-auto mb-10"
+          src={`${TOP_RESTAURANTS} /${cloudinaryImageId}`}
           alt="restaurant image "
         />
         {/* check if discount is available */}
@@ -44,7 +45,6 @@ function RestaurantCard({ resData }) {
           {" "}
           <FaStar className="text-green-900" /> {avgRating}
         </h3>
-        <h3 className="text-gray-500"> {areaName}</h3>
       </Link>
     </div>
   );

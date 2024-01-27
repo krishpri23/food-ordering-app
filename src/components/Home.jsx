@@ -23,7 +23,7 @@ export default function Home() {
   ) : (
     <main className="w-3/4 mx-auto">
       <SliderOptions resData={listOfRes} />
-      <TopRestaurants resData={listOfRes} />
+      {/* <TopRestaurants resData={listOfRes} /> */}
       <OnlineRestaurants />
     </main>
   );
