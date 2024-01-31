@@ -1,7 +1,8 @@
 // Top res chains in chennai
 
 import React from "react";
-import { TOP_RESTAURANTS } from "../utils/constants";
+import { TOP_RESTAURANTS } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
 export default function TopRestaurants({ resData }) {
   const { title } = resData?.data?.cards[1]?.card?.card?.header;
@@ -14,7 +15,8 @@ export default function TopRestaurants({ resData }) {
   return (
     <section className="w-full">
       <h1 className="font-bold text-2xl my-2"> {title} </h1>
-      <div className=" flex overflow-x-auto">
+      {/* HERE IS THE DIV I MENTIONED IN THE CODE   */}
+      <div className="overflow-x-auto flex ">
         {restaurants &&
           restaurants.map((res) => {
             const {
@@ -27,19 +29,18 @@ export default function TopRestaurants({ resData }) {
             } = res.info;
 
             return (
-              <div
+              <Link
                 key={res.info.id}
-                className="w-64 bg-green-200 m-5  rounded-xl font-bold  hover:border"
+                to={`restaurants/${res.info.id}`}
+                className="w-80 h-80 m-5  p-5 bg-slate-100 rounded-xl font-bold text-wrap"
               >
-                <div>
-                  <img
-                    src={` ${TOP_RESTAURANTS}/${cloudinaryImageId} `}
-                    alt="res image"
-                    className="w-64 h-32 rounded-md object-cover"
-                  />
-                </div>
+                <img
+                  src={` ${TOP_RESTAURANTS}/${cloudinaryImageId} `}
+                  alt="res image"
+                  className=" w-full h-32 rounded-md mb-2"
+                />
 
-                <div className="p-5">
+                <div>
                   <h1 className="text-wrap"> {name}</h1>
                   <div className="w-full flex gap-5">
                     <h2> {avgRating}</h2>
@@ -52,7 +53,7 @@ export default function TopRestaurants({ resData }) {
                     </h3>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </div>

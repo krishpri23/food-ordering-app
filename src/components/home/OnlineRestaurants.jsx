@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
-import { fetchData } from "../utils/api";
-import filterResByName from "../utils/helpers";
+import RestaurantCard from "../RestaurantCard";
+import { fetchData } from "../../utils/api";
+import filterResByName from "../../utils/helpers";
 
 export default function OnlineRestaurants() {
   const [searchText, setSearchText] = useState("");

@@ -1,7 +1,6 @@
 // What's on your mind banner
-
 import React from "react";
-import IMAGE_ADDRESS from "../utils/constants";
+import IMAGE_ADDRESS from "../../utils/constants";
 export default function SliderOptions({ resData }) {
   console.log("inside slider options", resData);
 

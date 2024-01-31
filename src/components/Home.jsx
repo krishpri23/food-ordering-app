@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import Shimmer from "../utils/shimmer";
-import OnlineRestaurants from "./OnlineRestaurants";
-import SliderOptions from "./SliderOptions";
+import OnlineRestaurants from "./home/OnlineRestaurants";
 import { fetchData } from "../utils/api";
-import TopRestaurants from "./TopRestaurants";
+import TopRestaurants from "./home/TopRestaurants";
+import SliderOptions from "./home/SliderOptions";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
