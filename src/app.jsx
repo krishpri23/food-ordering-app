@@ -12,6 +12,7 @@ import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Login from "./components/header/Login";
 import { DetailedSliderOption } from "./components/home/DetailedSliderOption";
+import { Register } from "./components/header/Register";
 
 const appRouter = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
       {
         path: "/about",

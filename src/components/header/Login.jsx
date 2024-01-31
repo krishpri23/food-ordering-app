@@ -40,7 +40,7 @@ const Login = () => {
         </button>
 
         <Link
-          to="/signup"
+          to="/register"
           className="font-normal text-blue-800 text-sm -mt-7 underline text-center "
         >
           Create a new account
