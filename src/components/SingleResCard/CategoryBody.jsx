@@ -44,10 +44,7 @@ export default function CategoryBody({ itemCards }) {
                 />
               )}
 
-              <button
-                className=" bg-slate-300 hover:bg-slate-900 hover:text-white  text-black px-8 py-2 rounded-md "
-                onClick={() => handleAddItem(item)}
-              >
+              <button id="primary-btn" onClick={() => handleAddItem(item)}>
                 {" "}
                 Add to cart{" "}
               </button>

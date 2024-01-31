@@ -21,7 +21,7 @@ function RestaurantCard({ resData }) {
 
   // important to set a w and h for fixed size
   return (
-    <div className=" bg-slate-200 w-72 h-80 m-10 p-6  hover:shadow-xl border-2 hover:border-slate-500 text-wrap">
+    <div className="bg-slate-100 w-72 h-80 m-5 p-5  hover:shadow-xl text-wrap ">
       <Link to={`/restaurants/${resData.id}`}>
         <img
           className=" w-60 h-32 rounded-md mx-auto mb-10"
@@ -38,7 +38,7 @@ function RestaurantCard({ resData }) {
         <h2 className="font-bold"> {name} </h2>
         {/* Important to use a div as parent for flex-wrap as it wraps the exceeding list to next line  */}
         <div className="flex flex-wrap">
-          <h3 className="text-gray-500 "> {cuisines.join(", ")}</h3>
+          <h3 className="text-gray-500 truncate"> {cuisines.join(", ")}</h3>
         </div>
 
         <h3 className="flex gap-2 items-center">

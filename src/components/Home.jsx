@@ -21,9 +21,9 @@ export default function Home() {
   return listOfRes?.length === 0 ? (
     <Shimmer />
   ) : (
-    <main className="w-3/4 mx-auto">
+    <main className="w-full mx-auto px-20">
       <SliderOptions resData={listOfRes} />
-      {/* <TopRestaurants resData={listOfRes} /> */}
+      <TopRestaurants resData={listOfRes} />
       <OnlineRestaurants />
     </main>
   );

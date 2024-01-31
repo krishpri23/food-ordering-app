@@ -33,12 +33,12 @@ export default function OnlineRestaurants() {
     setFilterRes(filteredResponse);
   }, [searchText, listOfRes]);
   return (
-    <>
-      <h1 className="font-bold  text-2xl mt-5">
+    <section className="px-10">
+      <h1 className="font-bold text-2xl mt-5">
         {" "}
         Restaurant with online delivery{" "}
       </h1>
-      <div className="flex gap-6 p-10 justify-center">
+      {/* <div className="w-full flex gap-6 p-10 justify-center">
         <input
           type="text"
           name="searchFilter"
@@ -56,7 +56,7 @@ export default function OnlineRestaurants() {
         >
           Search{" "}
         </button>
-      </div>
+      </div> */}
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
@@ -64,6 +64,6 @@ export default function OnlineRestaurants() {
             <RestaurantCard key={res.id} resData={res?.info} />
           ))}
       </div>
-    </>
+    </section>
   );
 }
