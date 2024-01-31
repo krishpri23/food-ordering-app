@@ -13,7 +13,7 @@ export default function TopRestaurants({ resData }) {
   console.log("resData ", resData);
 
   return (
-    <section className="w-full">
+    <section className="w-full px-10">
       <h1 className="font-bold text-2xl my-2"> {title} </h1>
       {/* HERE IS THE DIV I MENTIONED IN THE CODE   */}
       <div className="overflow-x-auto flex ">

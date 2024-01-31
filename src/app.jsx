@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Login from "./components/header/Login";
+import { DetailedSliderOption } from "./components/home/DetailedSliderOption";
 
 const appRouter = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/collections/:itemName/:itemId",
+        element: <DetailedSliderOption />,
       },
       {
         path: "/cart",

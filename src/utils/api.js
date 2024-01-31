@@ -25,4 +25,12 @@ const fetchMenu = async (resId) => {
   return json.data;
 };
 
-export { fetchMenu, fetchData };
+const fetchSliderMenu = async (itemId, itemName) => {
+  const data = await fetch(
+    `https://www.swiggy.com/dapi/restaurants/list/v5?lat=13.0826802&lng=80.2707184&collection=${itemId}&tags=layout_CCS_${itemName}&sortBy=&filters=&type=rcv2&offset=0&page_type=null`
+  );
+  const json = await data.json();
+  return json.data;
+};
+
+export { fetchMenu, fetchData, fetchSliderMenu };

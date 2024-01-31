@@ -58,6 +58,8 @@ export default function OnlineRestaurants() {
         </button>
       </div> */}
 
+      {/* filters  */}
+
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
           filterRes.map((res) => (
