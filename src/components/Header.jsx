@@ -20,7 +20,7 @@ const Header = () => {
           </span>
           <li> Search </li>
         </NavLink>
-        <NavLink className="flex justify-center gap-3 items-center" to="/">
+        <NavLink className="flex justify-center gap-3 items-center" to="/login">
           <span>
             <FaRegUserCircle />
           </span>
