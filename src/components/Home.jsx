@@ -6,6 +6,7 @@ import OnlineRestaurants from "./home/OnlineRestaurants";
 import { fetchData } from "../utils/api";
 import TopRestaurants from "./home/TopRestaurants";
 import SliderOptions from "./home/SliderOptions";
+import SearchRestaurant from "./Navbar/SearchRestaurant";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
@@ -25,6 +26,7 @@ export default function Home() {
       <SliderOptions resData={listOfRes} />
       {/* <TopRestaurants resData={listOfRes} /> */}
       <OnlineRestaurants />
+      <SearchRestaurant />
     </main>
   );
 }

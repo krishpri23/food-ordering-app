@@ -32,4 +32,12 @@ const fetchSliderMenu = async (itemId, itemName) => {
   return json.data;
 };
 
-export { fetchMenu, fetchData, fetchSliderMenu };
+const searchRestaurants = async () => {
+  const data = await fetch(
+    " https://www.swiggy.com/dapi/landing/PRE_SEARCH?lat=13.0826802&lng=80.2707184"
+  );
+  const json = await data.json();
+  return json.data;
+};
+
+export { fetchMenu, fetchData, fetchSliderMenu, searchRestaurants };
