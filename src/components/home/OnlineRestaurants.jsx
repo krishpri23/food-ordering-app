@@ -7,6 +7,7 @@ export default function OnlineRestaurants() {
   const [searchText, setSearchText] = useState("");
   const [listOfRes, setListOfRes] = useState([]);
   const [filterRes, setFilterRes] = useState([]);
+
   const [title, setTitle] = useState("");
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function OnlineRestaurants() {
           ?.restaurants
       );
 
-      console.log("Initial data from API :", listOfRes);
+      // console.log("Initial data from API :", listOfRes);
     };
     fetchAndUpdateState();
   }, []);
@@ -62,9 +63,23 @@ export default function OnlineRestaurants() {
 
       <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
         {filterRes &&
-          filterRes.map((res) => (
-            <RestaurantCard key={res.id} resData={res?.info} />
-          ))}
+          filterRes.map((res) => {
+            const { name, avgRating, cuisines, cloudinaryImageId } = res?.info;
+            const discountHeader = res.aggregatedDiscountInfoV3?.header;
+            const discountSubHeader = res.aggregatedDiscountInfoV3?.subHeader;
+            return (
+              <RestaurantCard
+                key={res.id}
+                // name={name}
+                // avgRating={avgRating}
+                // cuisines={cuisines}
+                // cloudinaryImageId={cloudinaryImageId}
+                // discountHeader={discountHeader}
+                // discountSubHeader={discountSubHeader}
+                resData={res?.info}
+              />
+            );
+          })}
       </div>
     </section>
   );

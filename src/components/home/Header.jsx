@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, NavLink } from "react-router-dom";
-import cartSlice from "../utils/cartSlice";
+import cartSlice from "../../utils/cartSlice";
 import { FaSearch } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -27,7 +27,10 @@ const Header = () => {
         Foodie Delivery
       </NavLink>
       <ul className="flex w-full justify-end  gap-20 py-3 rounded-sm">
-        <NavLink className="flex justify-center gap-3 items-center" to="/about">
+        <NavLink
+          className="flex justify-center gap-3 items-center"
+          to="/search"
+        >
           <span>
             {" "}
             <FaSearch />{" "}

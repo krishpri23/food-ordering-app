@@ -16,7 +16,7 @@ export default function TopRestaurants({ resData }) {
     <section className="w-full px-10">
       <h1 className="font-bold text-2xl my-2"> {title} </h1>
       {/* HERE IS THE DIV I MENTIONED IN THE CODE   */}
-      <div className="overflow-x-auto flex ">
+      <div className="overflow-x-auto flex flex-wrap ">
         {restaurants &&
           restaurants.map((res) => {
             const {
@@ -32,7 +32,7 @@ export default function TopRestaurants({ resData }) {
               <Link
                 key={res.info.id}
                 to={`restaurants/${res.info.id}`}
-                className="w-80 h-80 m-5  p-5 bg-slate-100 rounded-xl font-bold text-wrap"
+                className="w-80 h-80 m-5  p-5 bg-slate-100 rounded-xl font-bold text-wrap "
               >
                 <img
                   src={` ${TOP_RESTAURANTS}/${cloudinaryImageId} `}

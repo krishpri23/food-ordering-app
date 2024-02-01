@@ -13,16 +13,23 @@ Clickable component redirects to each restaurant detail page. Check App.jsx for 
 @returns (JSX.element) - Restaurant Card
 */
 
-function RestaurantCard({ resData }) {
+function RestaurantCard({
+  // id,
+  // name,
+  // avgRating,
+  // cuisines,
+  // cloudinaryImageId,
+  // discountHeader,
+  // discountSubHeader,
+  resData,
+}) {
+  const { id, name, avgRating, cuisines, cloudinaryImageId } = resData;
   const discountHeader = resData.aggregatedDiscountInfoV3?.header;
   const discountSubHeader = resData.aggregatedDiscountInfoV3?.subHeader;
-
-  const { name, avgRating, cuisines, cloudinaryImageId } = resData;
-
   // important to set a w and h for fixed size
   return (
     <div className="bg-slate-100 w-72 h-80 m-5 p-5  hover:shadow-xl text-wrap ">
-      <Link to={`/restaurants/${resData.id}`}>
+      <Link to={`/restaurants/${id}`}>
         <img
           className=" w-60 h-32 rounded-md mx-auto mb-10"
           src={`${TOP_RESTAURANTS} /${cloudinaryImageId}`}

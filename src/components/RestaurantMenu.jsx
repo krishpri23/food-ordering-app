@@ -6,10 +6,9 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Shimmer from "../utils/shimmer";
-import RestaurantOffers from "./SingleResCard/Offers";
-import RestaurantHeader from "./SingleResCard/Header";
 import { fetchMenu } from "../utils/api";
-import RestaurantCategory from "./SingleResCard/RestaurantCategory";
+import RestaurantHeader from "./SingleResCard/RestaurantHeader";
+import RestaurantOffers from "./SingleResCard/Offers";
 
 /* 
 

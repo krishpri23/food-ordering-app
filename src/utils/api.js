@@ -5,7 +5,6 @@ const fetchData = async () => {
     );
 
     const data = await res.json();
-    console.log("inside fetch data ", data);
 
     //update state var to json data
     return data;

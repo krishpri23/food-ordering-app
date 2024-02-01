@@ -1,18 +1,22 @@
 import ReactDOM from "react-dom/client";
-import React from "react";
-import Header from "./components/Header";
 import Home from "./components/Home";
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
-import AboutUs from "./components/About";
-import Contact from "./components/Contact";
-import Error from "./components/Error";
+
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
-import Cart from "./components/Cart";
-import Login from "./components/header/Login";
-import { DetailedSliderOption } from "./components/home/DetailedSliderOption";
-import { Register } from "./components/header/Register";
+import { Register } from "./components/Navbar/Register";
+import { SearchRestaurant } from "./components/Navbar/SearchRestaurant";
+import Error from "./components/home/Error";
+
+import {
+  Cart,
+  Login,
+  Register,
+  SearchRestaurant,
+} from "./components/Navbar/index.js";
+
+import Header from "./components/home/Header";
 
 const appRouter = createBrowserRouter([
   {
@@ -32,22 +36,19 @@ const appRouter = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
-      {
-        path: "/about",
-        element: <AboutUs />,
-      },
 
       {
-        path: "/contact",
-        element: <Contact />,
+        path: "/search",
+        element: <SearchRestaurant />,
       },
+
       {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
       {
         path: "/collections/:itemName/:itemId",
-        element: <DetailedSliderOption />,
+        element: <Home.DetailedSliderOption />,
       },
       {
         path: "/cart",
