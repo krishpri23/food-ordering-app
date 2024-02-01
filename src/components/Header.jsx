@@ -19,7 +19,13 @@ const Header = () => {
   const cartItems = useSelector((store) => store.cart.items);
   console.log("cart items", cartItems);
   return (
-    <nav className="w-full bg-indigo-200 px-6 py-3">
+    <nav className="w-full flex justify-between bg-indigo-200 px-6 py-3">
+      <NavLink
+        to="/"
+        className="w-full flex justify-start items-center font-bold text-orange-700"
+      >
+        Foodie Delivery
+      </NavLink>
       <ul className="flex w-full justify-end  gap-20 py-3 rounded-sm">
         <NavLink className="flex justify-center gap-3 items-center" to="/about">
           <span>
