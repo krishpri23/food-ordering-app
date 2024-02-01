@@ -20,21 +20,24 @@ export default function SliderOptions({ resData }) {
             .filter((item) => item.entityId.length === 5)
             .map((filteredData) => {
               return (
-                <Link
-                  className="w-1/2"
-                  key={filterData.id}
-                  to={`collections/${filteredData.action.text}/${filteredData.entityId}`}
-                >
-                  <img
-                    src={`${IMAGE_ADDRESS}/${filteredData.imageId}`}
-                    alt="food image"
-                    key={filteredData.id}
-                  />
-                </Link>
+                <div className="w-1/4">
+                  <Link
+                    key={filterData.id}
+                    to={`collections/${filteredData.action.text}/${filteredData.entityId}`}
+                  >
+                    <img
+                      src={`${IMAGE_ADDRESS}/${filteredData.imageId}`}
+                      alt="food image"
+                      key={filteredData.id}
+                    />
+                  </Link>{" "}
+                </div>
               );
             })}
-        {/* {filterData &&
-          filterData.map((item) => {
+        {/* Items with entity Id as links  */}
+        {/* {headerItems &&
+          headerItems.map((item) => {
+            console.log(item.action.text, item.entityId);
             return (
               <Link
                 className="w-full"

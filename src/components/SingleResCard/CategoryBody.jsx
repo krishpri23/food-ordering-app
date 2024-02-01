@@ -44,7 +44,10 @@ export default function CategoryBody({ itemCards }) {
                 />
               )}
 
-              <button id="primary-btn" onClick={() => handleAddItem(item)}>
+              <button
+                className="primary-btn"
+                onClick={() => handleAddItem(item)}
+              >
                 {" "}
                 Add to cart{" "}
               </button>

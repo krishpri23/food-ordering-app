@@ -55,6 +55,7 @@ export const Register = () => {
       JSON.stringify({
         email: email,
         password: password,
+        name: name,
       })
     );
     setName("");
