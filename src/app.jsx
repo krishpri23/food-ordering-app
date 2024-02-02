@@ -24,7 +24,6 @@ import {
 
 import Header from "./components/home/Header";
 import DetailedSliderOption from "./components/home/DetailedSliderOption";
-import Logout from "./components/Navbar/Logout.jsx";
 const appRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<App />}>
@@ -32,7 +31,6 @@ const appRouter = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/logout" element={<Logout />} />
       <Route path="/search" element={<SearchRestaurant />} />
       <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
       <Route
