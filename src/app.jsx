@@ -1,6 +1,12 @@
 import ReactDOM from "react-dom/client";
 import Home from "./components/Home";
-import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  Outlet,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router-dom";
 
 import RestaurantMenu from "./components/RestaurantMenu";
 import { Provider } from "react-redux";
@@ -18,46 +24,62 @@ import {
 
 import Header from "./components/home/Header";
 import DetailedSliderOption from "./components/home/DetailedSliderOption";
+const appRouter = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<App />}>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/search" element={<SearchRestaurant />} />
+      <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
+      <Route
+        path="//collections/:itemName/:itemId"
+        element={<DetailedSliderOption />}
+      />
+    </Route>
+  )
 
-const appRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
+  // [
+  //   {
+  //     path: "/",
+  //     element: <App />,
+  //     errorElement: <Error />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: <Home />,
+  //       },
+  //       {
+  //         path: "/login",
+  //         element: <Login />,
+  //       },
+  //       {
+  //         path: "/register",
+  //         element: <Register />,
+  //       },
 
-      {
-        path: "/search",
-        element: <SearchRestaurant />,
-      },
+  //       {
+  //         path: "/search",
+  //         element: <SearchRestaurant />,
+  //       },
 
-      {
-        path: "/restaurants/:resId",
-        element: <RestaurantMenu />,
-      },
-      {
-        path: "/collections/:itemName/:itemId",
-        element: <DetailedSliderOption />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-    ],
-  },
-]);
+  //       {
+  //         path: "/restaurants/:resId",
+  //         element: <RestaurantMenu />,
+  //       },
+  //       {
+  //         path: "/collections/:itemName/:itemId",
+  //         element: <DetailedSliderOption />,
+  //       },
+  //       {
+  //         path: "/cart",
+  //         element: <Cart />,
+  //       },
+  //     ],
+  //   },
+  // ]
+);
 
 function App() {
   return (
