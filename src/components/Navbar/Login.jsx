@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState(null);
   const [emailValid, setEmailValid] = useState();
 
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState(null);
   const [passwordValid, setPasswordValid] = useState();
 
-  const [errMsg, setErrMsg] = useState();
+  const [errMsg, setErrMsg] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,7 +18,7 @@ const Login = () => {
     console.log("Logged in successfully");
     login.email === email && login.password === password
       ? navigate("/")
-      : setErrMsg(" Invalid Email or Password !!");
+      : setErrMsg("Invalid Email or Password !!");
   };
 
   return (
@@ -38,6 +38,7 @@ const Login = () => {
           required
           onChange={(e) => setEmail(e.target.value)}
         />
+
         <input
           type="password"
           id="password"
@@ -45,6 +46,7 @@ const Login = () => {
           required
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errMsg && <p className="font-bold text-red-600"> {errMsg} </p>}
         <p className="font-thin text-slate-900 text-sm -mt-7">
           By clicking on Login, I accept the Terms & Conditions & Privacy Policy
         </p>

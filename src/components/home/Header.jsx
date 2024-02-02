@@ -15,6 +15,9 @@ const Header = () => {
     console.log(login);
   }, []);
 
+  const handleLogout = () => {
+    return;
+  };
   // subscribing to the cart items
   const cartItems = useSelector((store) => store.cart.items);
   console.log("cart items", cartItems);
@@ -38,12 +41,15 @@ const Header = () => {
           <li> Search </li>
         </NavLink>
         {login ? (
-          <div className="flex justify-center items-center gap-3">
+          <Link
+            to="/profile"
+            className="flex justify-center items-center gap-3"
+          >
             <span>
               <RxAvatar />{" "}
             </span>
             <span className="text-black"> {login.name} </span>
-          </div>
+          </Link>
         ) : (
           <NavLink
             className="flex justify-center gap-3 items-center"
@@ -56,12 +62,23 @@ const Header = () => {
           </NavLink>
         )}
 
-        <NavLink className="flex justify-center gap-3 items-center" to="/cart">
+        {login && (
+          <button
+            type="button"
+            onClick={handleLogout}
+            className="bg-red-800 px-4 py-2 rounded-lg text-white "
+          >
+            {" "}
+            Logout{" "}
+          </button>
+        )}
+
+        <NavLink className="flex justify-center gap-1 items-center" to="/cart">
           <span>
             {" "}
             <FaCartArrowDown />
           </span>
-          <span>Cart ({cartItems.length}) </span>{" "}
+          <span> ({cartItems.length}) </span>{" "}
         </NavLink>
       </ul>
     </nav>
