@@ -25,11 +25,12 @@ const DetailedSliderOption = () => {
   }, []);
 
   return (
-    <main className="p-10">
-      <h1 className="font-bold "> {itemName} </h1>
-      <p> {description} </p>
-
-      <div className="w-full flex flex-col mx-auto lg:flex-row flex-wrap justify-center ">
+    <main className="p-10 w-11/12 mx-auto">
+      <div className="pl-15">
+        <h1 className="font-bold"> {itemName} </h1>
+        <p> {description} </p>
+      </div>
+      <div className="w-full flex flex-col gap-10 lg:flex-row flex-wrap">
         {displayData &&
           displayData.map((res) => {
             return (

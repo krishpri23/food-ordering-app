@@ -17,6 +17,7 @@ import {
 } from "./components/Navbar/index.js";
 
 import Header from "./components/home/Header";
+import DetailedSliderOption from "./components/home/DetailedSliderOption";
 
 const appRouter = createBrowserRouter([
   {
@@ -48,7 +49,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/collections/:itemName/:itemId",
-        element: <Home.DetailedSliderOption />,
+        element: <DetailedSliderOption />,
       },
       {
         path: "/cart",

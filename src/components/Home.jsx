@@ -4,9 +4,7 @@ import React, { useEffect, useState } from "react";
 import Shimmer from "../utils/shimmer";
 import OnlineRestaurants from "./home/OnlineRestaurants";
 import { fetchData } from "../utils/api";
-import TopRestaurants from "./home/TopRestaurants";
 import SliderOptions from "./home/SliderOptions";
-import SearchRestaurant from "./Navbar/SearchRestaurant";
 
 export default function Home() {
   const [listOfRes, setListOfRes] = useState([]);
@@ -14,7 +12,6 @@ export default function Home() {
     const fetchAndUpdateState = async () => {
       const data = await fetchData();
       setListOfRes(data);
-      console.log("Initial data from API :", listOfRes);
     };
     fetchAndUpdateState();
   }, []);
@@ -25,8 +22,7 @@ export default function Home() {
     <main className="w-full mx-auto px-20">
       <SliderOptions resData={listOfRes} />
       {/* <TopRestaurants resData={listOfRes} /> */}
-      <OnlineRestaurants />
-      <SearchRestaurant />
+      <OnlineRestaurants resData={listOfRes} />
     </main>
   );
 }

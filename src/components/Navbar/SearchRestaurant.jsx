@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { searchRestaurants } from "../../utils/api";
 import { Link } from "react-router-dom";
 import IMAGE_ADDRESS from "../../utils/constants";
+import { suggestedRestaurants } from "../../utils/api";
 
 const SearchRestaurant = () => {
   const [searchText, setSearchText] = useState("");
   const [popularCuisines, setPopularcuisines] = useState([]);
+  const [suggestedRes, setSuggestedRes] = useState([]);
 
   useEffect(() => {
     const fetchPopularData = async () => {
@@ -16,8 +18,24 @@ const SearchRestaurant = () => {
     fetchPopularData();
   }, []);
 
+  useEffect(() => {
+    const fetchSuggestedRes = async () => {
+      const data = await suggestedRestaurants(searchText);
+      setSuggestedRes(data?.suggestions);
+      console.log("inside handle click ", suggestedRes);
+    };
+
+    fetchSuggestedRes();
+  }, [searchText]);
+
+  const extractName = (link) => {
+    const arrays = link.split("?");
+    const values = arrays[1].split("=");
+    return values[1];
+  };
+
   return (
-    <main className="w-full">
+    <main className="w-full ">
       <div className="w-full flex  gap-6 p-10 justify-center">
         <input
           type="text"
@@ -38,19 +56,50 @@ const SearchRestaurant = () => {
           Search{" "}
         </button>
       </div>
-      <div className="flex flex-nowrap gap-2 px-10 ">
-        {popularCuisines &&
-          popularCuisines.map((item) => {
-            return (
-              <Link to="/" className="w-1/2" key={item.id}>
-                <img
-                  src={`${IMAGE_ADDRESS}/${item.imageId}`}
-                  alt="food image"
-                />
-              </Link>
-            );
-          })}
-      </div>
+
+      {searchText ? (
+        <div className="flex flex-wrap gap-10 justify-center items-center ">
+          {suggestedRes &&
+            suggestedRes?.map((res) => (
+              <div className="w-3/4 flex bg-slate-300 px-5">
+                {/* image */}
+                <div>
+                  <img
+                    className="w-10 h-10"
+                    src={`${IMAGE_ADDRESS}/${res.cloudinaryId}`}
+                    alt="food image"
+                  />
+                </div>
+                <div>
+                  <h1> {res.text}</h1>
+                  <h2>{res.tagToDisplay}</h2>
+                </div>
+              </div>
+            ))}
+        </div>
+      ) : (
+        <>
+          <h1 className="block font-bold px-12 mb-5"> Popular Cuisines </h1>
+          <div className="flex flex-nowrap gap-2 px-10 ">
+            {popularCuisines &&
+              popularCuisines.map((item) => {
+                return (
+                  <button
+                    type="button"
+                    className="w-1/2"
+                    key={item.id}
+                    onClick={() => setSearchText(extractName(item.action.link))}
+                  >
+                    <img
+                      src={`${IMAGE_ADDRESS}/${item.imageId}`}
+                      alt="food image"
+                    />
+                  </button>
+                );
+              })}
+          </div>
+        </>
+      )}
     </main>
   );
 };

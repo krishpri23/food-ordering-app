@@ -28,7 +28,7 @@ function RestaurantCard({
   const discountSubHeader = resData.aggregatedDiscountInfoV3?.subHeader;
   // important to set a w and h for fixed size
   return (
-    <div className="bg-slate-100 w-72 h-80 m-5 p-5  hover:shadow-xl text-wrap ">
+    <div className="bg-slate-100 w-72 h-80 my-5 p-5  hover:shadow-xl text-wrap">
       <Link to={`/restaurants/${id}`}>
         <img
           className=" w-60 h-32 rounded-md mx-auto mb-10"

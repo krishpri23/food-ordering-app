@@ -56,10 +56,7 @@ const Header = () => {
           </NavLink>
         )}
 
-        <NavLink
-          className="flex justify-center gap-3 items-center"
-          to="/contact"
-        >
+        <NavLink className="flex justify-center gap-3 items-center" to="/cart">
           <span>
             {" "}
             <FaCartArrowDown />

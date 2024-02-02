@@ -9,7 +9,7 @@ import Shimmer from "../utils/shimmer";
 import { fetchMenu } from "../utils/api";
 import RestaurantHeader from "./SingleResCard/RestaurantHeader";
 import RestaurantOffers from "./SingleResCard/Offers";
-
+import RestaurantCategory from "./SingleResCard/RestaurantCategory";
 /* 
 
 This is a dynamic component that displays restaurant details using resId displayed on url

@@ -40,4 +40,18 @@ const searchRestaurants = async () => {
   return json.data;
 };
 
-export { fetchMenu, fetchData, fetchSliderMenu, searchRestaurants };
+const suggestedRestaurants = async (itemName) => {
+  const data = await fetch(
+    `https://www.swiggy.com/dapi/restaurants/search/suggest?lat=13.0826802&lng=80.2707184&str=${itemName}&trackingId=undefined`
+  );
+  const json = await data.json();
+  return json.data;
+};
+
+export {
+  fetchMenu,
+  fetchData,
+  fetchSliderMenu,
+  searchRestaurants,
+  suggestedRestaurants,
+};
