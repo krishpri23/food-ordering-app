@@ -1,10 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PWD_REGEX, USER_REGEX, EMAIL_REGEX } from "../../const/regex";
 
 export default Register = () => {
-  const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
-  const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-  const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   const REGISTER_URL = "/register";
 
   // To focus on name field on reload
@@ -26,6 +24,7 @@ export default Register = () => {
   const [validConfirm, setValidConfirm] = useState(false);
   const [confirmFocus, setConfirmFocus] = useState(false);
 
+  const [errMsg, setErrMsg] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,6 +79,13 @@ export default Register = () => {
           onFocus={() => setNameFocus(true)}
           onBlur={() => setNameFocus(false)}
         />
+        <p
+          className={
+            nameRef && name && !validName ? "text-red-600 font-bold " : "hidden"
+          }
+        >
+          Invalid Name
+        </p>
         <input
           type="text"
           placeholder="Email"
@@ -90,6 +96,15 @@ export default Register = () => {
           onFocus={() => setEmailFocus(true)}
           onBlur={() => setEmailFocus(false)}
         />
+        <p
+          className={
+            emailFocus && email && !validEmail
+              ? "text-red-600 font-bold "
+              : "hidden"
+          }
+        >
+          Invalid Email
+        </p>
         <input
           type="password"
           placeholder="Password"
@@ -99,6 +114,15 @@ export default Register = () => {
           onFocus={() => setPassFocus(true)}
           onBlur={() => setPassFocus(false)}
         />
+        <p
+          className={
+            passFocus && password && !validPassword
+              ? "text-red-600 font-bold "
+              : "hidden"
+          }
+        >
+          Invalid Password
+        </p>
         <input
           type="password"
           placeholder="Confirm Password"
@@ -108,12 +132,21 @@ export default Register = () => {
           onFocus={() => setConfirmFocus(true)}
           onBlur={() => setConfirmFocus(false)}
         />
+        <p
+          className={
+            confirmFocus && confirmPassword && !validConfirm
+              ? "text-red-600 font-bold "
+              : "hidden"
+          }
+        >
+          Password do not match
+        </p>
         <button
           className="primary-btn"
           type="submit"
-          disabled={
-            !validName || !validEmail || !validPassword || !validConfirm
-          }
+          // disabled={
+          //   !validName || !validEmail || !validPassword || !validConfirm
+          // }
         >
           Register
         </button>
