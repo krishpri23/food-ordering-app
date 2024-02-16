@@ -39,7 +39,7 @@ function RestaurantMenu() {
   const fetchMenuApi = async () => {
     const data = await fetchMenu(resId);
     setResInfo(data);
-    console.log(data);
+    // console.log(data);
   };
 
   // State to isOpen/close accordion. This index value will reflect on which accordion will stay open

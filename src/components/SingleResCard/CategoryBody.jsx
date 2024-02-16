@@ -1,23 +1,39 @@
+/**
+ * This component is where all the food items are displayed and user action takes place
+ */
+
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../utils/cartSlice";
+import { useCartContext } from "../../context/CartContext";
 
 export default function CategoryBody({ itemCards }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
+  const { state, dispatch } = useCartContext();
+  console.log("state inisde cat body", state?.cart);
 
   const handleAddItem = (item) => {
+    console.log("cart items inside add", state?.cart);
+    const itemExists = state?.cart.find(
+      (cartItems) => cartItems.id === item.id
+    );
+    const qty = itemExists ? itemExists.qty + 1 : 1;
+
+    console.log("item exists", itemExists);
     // dispatch action
-    console.log("item dispatched ");
-    dispatch(addItem(item));
+    console.log(" add item clicked ", item.card.info);
+    // dispatch(addItem(item));
+    dispatch({ type: "ADD", payload: { ...item.card.info, qty } });
   };
 
-  console.log(itemCards);
+  // console.log(itemCards);
   // Each accordion body
   return (
     <section className="border-b-2 border-gray-500 ">
       {itemCards?.map((item) => {
         const { name, price, ribbon, imageId, description } = item.card.info;
+
         return (
           <div
             key={item.card.info.id}

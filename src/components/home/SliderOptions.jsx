@@ -33,7 +33,7 @@ export default function SliderOptions({ resData }) {
             //some entityId has links so had to do the check for numbers
             .filter((item) => item.entityId.length === 5)
             .map((filteredData, index) => {
-              console.log("filtered data with entity id", filterData);
+              // console.log("filtered data with entity id", filterData);
               return (
                 <div className="w-1/4" key={index}>
                   <Link

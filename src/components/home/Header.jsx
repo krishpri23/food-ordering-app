@@ -6,6 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaCartArrowDown } from "react-icons/fa";
 import { RxAvatar } from "react-icons/rx";
+import { useCartContext } from "../../context/CartContext";
 
 const Header = () => {
   const [login, setLogin] = useState("");
@@ -19,8 +20,12 @@ const Header = () => {
     return;
   };
   // subscribing to the cart items
-  const cartItems = useSelector((store) => store.cart.items);
-  console.log("cart items", cartItems);
+  // const cartItems = useSelector((store) => store.cart.items);
+  // console.log("cart items", cartItems);
+
+  const { state } = useCartContext();
+  console.log("state inside header", state?.cart?.length);
+
   return (
     <nav className="w-full flex justify-between bg-indigo-200 px-6 py-3">
       <NavLink
@@ -78,7 +83,7 @@ const Header = () => {
             {" "}
             <FaCartArrowDown />
           </span>
-          <span> ({cartItems.length}) </span>{" "}
+          <span> {state?.cart?.length} () </span>
         </NavLink>
       </ul>
     </nav>
