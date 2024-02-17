@@ -1,7 +1,7 @@
 import { createContext, useReducer } from "react";
 
 const initState = {
-  cart: [{ name: "soup", price: 100 }],
+  cart: [],
 };
 
 export const CartContext = createContext(initState);
@@ -35,9 +35,7 @@ const reducer = (state, action) => {
 };
 
 export const useCartContext = () => {
-  const [state, dispatch] = useReducer(reducer, {
-    cart: [],
-  });
+  const [state, dispatch] = useReducer(reducer, initState);
 
   return { state, dispatch };
 };

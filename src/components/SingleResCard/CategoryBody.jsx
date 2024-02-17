@@ -22,9 +22,10 @@ export default function CategoryBody({ itemCards }) {
 
     console.log("item exists", itemExists);
     // dispatch action
-    console.log(" add item clicked ", item.card.info);
     // dispatch(addItem(item));
-    dispatch({ type: "ADD", payload: { ...item.card.info, qty } });
+    console.log(" add item clicked ", item.card.info);
+
+    dispatch({ type: "ADD", payload: { ...item.card.info } });
   };
 
   // console.log(itemCards);
