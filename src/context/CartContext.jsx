@@ -39,15 +39,7 @@ export const useCartContext = () => {
     cart: [],
   });
 
-  const totalPrice = state?.cart?.reduce((acc, item) => {
-    return acc + item.qty * item.price;
-  }, 0);
-
-  const totalItems = state?.cart?.reduce((acc, item) => {
-    return acc + item.qty + 1;
-  }, 0);
-
-  return { state, dispatch, totalPrice, totalItems };
+  return { state, dispatch };
 };
 
 export const CartProvider = ({ children }) => {
